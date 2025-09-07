@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7agg7f8gpdo2"]
+
+[ext_resource type="Script" uid="uid://c8n65wbnr1vy6" path="res://general_scripts/drop.gd" id="1_j1wuv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a70bc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1wuv"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_a70bc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a30nb"]
+albedo_color = Color(0, 1, 0.309804, 1)
+emission_enabled = true
+emission = Color(0, 1, 0.309804, 1)
+emission_energy_multiplier = 2.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_j1wuv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_mctsa"]
+radial_segments = 24
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a70bc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a70bc"]
+size = Vector3(1.22412, 1.32663, 1.17737)
+
+[node name="Enemy1_Drop1" type="RigidBody3D"]
+script = ExtResource("1_j1wuv")
+drop_type = "MUTATED WATER ORB"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_a30nb")
+mesh = SubResource("SphereMesh_mctsa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_a70bc")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140732, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041748, 0.0192719, 0.0130005)
+shape = SubResource("BoxShape3D_a70bc")
+
+[connection signal="body_entered" from="Area3D" to="." method="triggered"]

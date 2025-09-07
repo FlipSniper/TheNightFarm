@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://binv6gyeosid8"]
+
+[ext_resource type="Script" uid="uid://c8n65wbnr1vy6" path="res://general_scripts/drop.gd" id="1_1bd8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iawil"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1bd8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqv3g"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iawil"]
+height = 1.47559
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iawil"]
+size = Vector3(1.22412, 1.60925, 1.17737)
+
+[node name="Enemy1_Drop2" type="RigidBody3D"]
+script = ExtResource("1_1bd8d")
+drop_type = "Radioactive Vial"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.653452, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_iawil")
+mesh = SubResource("CylinderMesh_1bd8d")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.06843, 0, 0, 0, 0.195638, 0, 0, 0, 1.06843, 0, 0.642811, 0)
+mesh = SubResource("CylinderMesh_1bd8d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.991202, 0, 0, 0, 0.469373, 0, 0, 0, 0.991202, 0, -0.149509, 0)
+material_override = SubResource("StandardMaterial3D_nqv3g")
+mesh = SubResource("CylinderMesh_1bd8d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0942383, 0)
+shape = SubResource("CylinderShape3D_iawil")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041748, 0.160583, 0.0130005)
+shape = SubResource("BoxShape3D_iawil")
+
+[connection signal="body_entered" from="Area3D" to="." method="triggered"]

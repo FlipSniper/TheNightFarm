@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://nr6mfxir5gfq"]
+
+[ext_resource type="PackedScene" uid="uid://dfjd2dftnpnd6" path="res://assets/glb_models/shop.glb" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://ba8oe544ccyfu" path="res://assets/textures/wood2.jpg" id="2_032fp"]
+[ext_resource type="Material" uid="uid://puo0qqu4g2a7" path="res://assets/materials/metal.tres" id="3_2fc2m"]
+[ext_resource type="Material" uid="uid://dpy0i0tppqkc5" path="res://assets/materials/wood.tres" id="4_8r1wq"]
+
+[sub_resource type="GDScript" id="GDScript_032fp"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajxib"]
+albedo_texture = ExtResource("2_032fp")
+uv1_scale = Vector3(1.1, 3.84, 1)
+uv1_offset = Vector3(0, 0.075, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6sft"]
+albedo_texture = ExtResource("2_032fp")
+uv1_scale = Vector3(0.995, 3.525, 1)
+uv1_offset = Vector3(0, 0.165, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4ofw"]
+albedo_color = Color(0.0509804, 0.458824, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_032fp"]
+size = Vector3(3.88, 6.005, 8.735)
+
+[node name="shop" instance=ExtResource("1_lx5au")]
+script = SubResource("GDScript_032fp")
+
+[node name="Cube" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_ajxib")
+
+[node name="Cube_002" parent="." index="1"]
+material_override = ExtResource("3_2fc2m")
+
+[node name="Cube_001" parent="." index="2"]
+material_override = ExtResource("4_8r1wq")
+
+[node name="Cube_003" parent="." index="3"]
+material_override = ExtResource("4_8r1wq")
+
+[node name="Cube_004" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_y6sft")
+
+[node name="Cube_005" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_m4ofw")
+
+[node name="Cube_006" parent="." index="6"]
+material_override = SubResource("StandardMaterial3D_m4ofw")
+
+[node name="Cube_007" parent="." index="7"]
+material_override = SubResource("StandardMaterial3D_m4ofw")
+
+[node name="shop" type="StaticBody3D" parent="." index="8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shop" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01212, -0.0173035)
+shape = SubResource("BoxShape3D_032fp")

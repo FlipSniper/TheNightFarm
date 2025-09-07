@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxea5j5cg88ja"]
+
+[ext_resource type="Script" uid="uid://sjgdxwqbce5q" path="res://general_scripts/crop.gd" id="1_eeufs"]
+[ext_resource type="PackedScene" uid="uid://hkegm3tgeehy" path="res://scenes/crops/weapons/mace/stages/mace_stg_3.tscn" id="2_0b1pj"]
+[ext_resource type="PackedScene" uid="uid://bak0s41gqvlcc" path="res://scenes/crops/weapons/mace/stages/mace_stg_2.tscn" id="3_w6d86"]
+[ext_resource type="PackedScene" uid="uid://cuatm08ufnbyh" path="res://scenes/crops/weapons/mace/stages/mace_stg_1.tscn" id="4_bv1sj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej6i0"]
+radius = 0.6
+height = 4.0614
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s4ec8"]
+height = 2.64396
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5whp"]
+height = 1.92452
+
+[node name="Mace" type="StaticBody3D"]
+script = ExtResource("1_eeufs")
+crop_type = "BROKEN_MACE"
+growth_time_in_seconds = 5.0
+
+[node name="Large" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83457, 0)
+shape = SubResource("CapsuleShape3D_ej6i0")
+
+[node name="mace_stg3" parent="Large" instance=ExtResource("2_0b1pj")]
+transform = Transform3D(0.299521, 0, 0, 0, 0.299521, 0, 0, 0, 0.299521, 0, -0.21526, 0)
+
+[node name="Medium" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31195, 0)
+shape = SubResource("CapsuleShape3D_s4ec8")
+
+[node name="mace_stg2" parent="Medium" instance=ExtResource("3_w6d86")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.665183, 0)
+
+[node name="Small" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.903274, 0)
+shape = SubResource("CapsuleShape3D_k5whp")
+
+[node name="mace_stg1" parent="Small" instance=ExtResource("4_bv1sj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.675261, 0)

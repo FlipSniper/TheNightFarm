@@ -1,0 +1,702 @@
+[gd_scene load_steps=5 format=3 uid="uid://choq8g4ehplrp"]
+
+[ext_resource type="Script" uid="uid://1n3aaq6b8fpj" path="res://general_scripts/scroll.gd" id="2_dajm1"]
+[ext_resource type="Script" uid="uid://e5m1j51rodye" path="res://general_scripts/shop.gd" id="2_e6gg6"]
+[ext_resource type="Script" uid="uid://h02urn58tun6" path="res://general_scripts/controls.gd" id="3_e6gg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6gg6"]
+size = Vector2(404, 656.5)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="InventoryUI" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_dajm1")
+
+[node name="Panel" type="Panel" parent="InventoryUI"]
+clip_contents = true
+offset_right = 291.0
+offset_bottom = 650.0
+
+[node name="levels" type="Node2D" parent="InventoryUI/Panel"]
+
+[node name="Slot1" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot1"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot1"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot2" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 38.0
+offset_right = 8.0
+offset_bottom = 46.0
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot2"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot2"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot3" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 76.0
+offset_right = 8.0
+offset_bottom = 84.0
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot3"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot3"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot4" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 118.0
+offset_right = 292.535
+offset_bottom = 149.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot4"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot4"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot5" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 156.0
+offset_right = 292.535
+offset_bottom = 187.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot5"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot5"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot6" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 195.0
+offset_right = 292.535
+offset_bottom = 226.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot6"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot6"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot7" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 233.0
+offset_right = 292.535
+offset_bottom = 264.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot7"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot7"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot7"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot8" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 271.0
+offset_right = 292.535
+offset_bottom = 302.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot8"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot8"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot8"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot9" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 313.0
+offset_right = 292.535
+offset_bottom = 344.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot9"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot9"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot9"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot10" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 351.0
+offset_right = 292.535
+offset_bottom = 382.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot10"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot10"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot10"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot11" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 394.0
+offset_right = 292.535
+offset_bottom = 425.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot11"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot11"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot11"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot12" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 432.0
+offset_right = 292.535
+offset_bottom = 463.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot12"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot12"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot12"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot13" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 470.0
+offset_right = 292.535
+offset_bottom = 501.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot13"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot13"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot13"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot14" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 512.0
+offset_right = 292.535
+offset_bottom = 543.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot14"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot14"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot14"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot15" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 550.0
+offset_right = 292.535
+offset_bottom = 581.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot15"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot15"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot15"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot16" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 591.0
+offset_right = 292.535
+offset_bottom = 622.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot16"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot16"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot16"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot17" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 629.0
+offset_right = 292.535
+offset_bottom = 660.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot17"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot17"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot17"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot18" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 667.0
+offset_right = 292.535
+offset_bottom = 698.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot18"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot18"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot18"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot19" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 709.0
+offset_right = 292.535
+offset_bottom = 740.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot19"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 164.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot19"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot19"]
+layout_mode = 0
+offset_left = 251.0
+offset_right = 291.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="Slot20" type="Button" parent="InventoryUI/Panel/levels"]
+custom_minimum_size = Vector2(292.535, 31.505)
+offset_top = 747.0
+offset_right = 292.535
+offset_bottom = 778.505
+
+[node name="Icon" type="TextureRect" parent="InventoryUI/Panel/levels/Slot20"]
+layout_mode = 0
+offset_left = 122.0
+offset_right = 162.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="InventoryUI/Panel/levels/Slot20"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No"
+
+[node name="AmountLabel" type="Label" parent="InventoryUI/Panel/levels/Slot20"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 23.0
+text = "No"
+horizontal_alignment = 2
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="InventoryUI"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryUI/CharacterBody2D"]
+position = Vector2(146.5, 323.75)
+shape = SubResource("RectangleShape2D_e6gg6")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1111.0
+offset_right = 1151.0
+offset_bottom = 23.0
+horizontal_alignment = 2
+
+[node name="Shop" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_e6gg6")
+
+[node name="Panel" type="Panel" parent="Shop"]
+clip_contents = true
+custom_minimum_size = Vector2(400, 0)
+offset_right = 291.0
+offset_bottom = 650.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Trade1" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 57.61)
+layout_mode = 2
+
+[node name="RewardIcon" type="TextureRect" parent="Shop/Panel/VBoxContainer/Trade1"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="CostLabel" type="Label" parent="Shop/Panel/VBoxContainer/Trade1"]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="Shop/Panel/VBoxContainer/Trade1"]
+layout_mode = 2
+text = "dsda"
+
+[node name="Trade2" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 57.61)
+layout_mode = 2
+
+[node name="RewardIcon" type="TextureRect" parent="Shop/Panel/VBoxContainer/Trade2"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="CostLabel" type="Label" parent="Shop/Panel/VBoxContainer/Trade2"]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="Shop/Panel/VBoxContainer/Trade2"]
+layout_mode = 2
+text = "dsda"
+
+[node name="Trade3" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 57.61)
+layout_mode = 2
+
+[node name="RewardIcon" type="TextureRect" parent="Shop/Panel/VBoxContainer/Trade3"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="CostLabel" type="Label" parent="Shop/Panel/VBoxContainer/Trade3"]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="Shop/Panel/VBoxContainer/Trade3"]
+layout_mode = 2
+text = "dsda"
+
+[node name="Trade4" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 57.61)
+layout_mode = 2
+
+[node name="RewardIcon" type="TextureRect" parent="Shop/Panel/VBoxContainer/Trade4"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="CostLabel" type="Label" parent="Shop/Panel/VBoxContainer/Trade4"]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="Shop/Panel/VBoxContainer/Trade4"]
+layout_mode = 2
+text = "dsda"
+
+[node name="Trade5" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 57.61)
+layout_mode = 2
+
+[node name="RewardIcon" type="TextureRect" parent="Shop/Panel/VBoxContainer/Trade5"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="CostLabel" type="Label" parent="Shop/Panel/VBoxContainer/Trade5"]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="Shop/Panel/VBoxContainer/Trade5"]
+layout_mode = 2
+text = "dsda"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Shop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/CharacterBody2D"]
+position = Vector2(201, 323.75)
+shape = SubResource("RectangleShape2D_e6gg6")
+
+[node name="Close" type="Button" parent="Shop"]
+offset_left = 443.0
+offset_right = 493.0
+offset_bottom = 31.0
+text = "Close
+"
+
+[node name="Controls" type="CanvasLayer" parent="."]
+script = ExtResource("3_e6gg6")
+
+[node name="Label" type="Label" parent="Controls"]
+offset_left = 991.0
+offset_top = 91.0
+offset_right = 1125.0
+offset_bottom = 192.0
+text = "Inventory - Q
+Interact - E
+Plant - Right Click
+Attack - Left Click"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 988.0
+offset_top = 64.0
+offset_right = 1153.0
+offset_bottom = 87.0
+text = "Press Esc for controls"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="Shop/Close" to="Shop" method="close"]

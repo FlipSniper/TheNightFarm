@@ -1,0 +1,181 @@
+[gd_scene load_steps=19 format=3 uid="uid://dl8iqmloyfrfb"]
+
+[ext_resource type="Script" uid="uid://cu80awssqj4bn" path="res://general_scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c5ctnuitskyhe" path="res://general_scripts/fp_cam.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://cf227orwx285m" path="res://general_scripts/inventory.gd" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://xlavnbra1auk" path="res://assets/textures/crosshair.png" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://gtop4avsens7" path="res://general_scripts/interacter.gd" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://bgybkvl66dtj0" path="res://scenes/crops/weapons/sword/harvest/sword.tscn" id="5_fjrip"]
+[ext_resource type="PackedScene" uid="uid://bxea5j5cg88ja" path="res://scenes/crops/weapons/mace/harvest/mace.tscn" id="6_73kkf"]
+[ext_resource type="PackedScene" uid="uid://b8i7l4w2p2wl" path="res://scenes/weapons/player_sword.tscn" id="6_fjrip"]
+[ext_resource type="Script" uid="uid://bbmhfwl6dpcka" path="res://scenes/crops/weapons/sword/swing.gd" id="7_smehm"]
+[ext_resource type="PackedScene" uid="uid://dnwmme7fwxqsu" path="res://scenes/weapons/player_broken_mace.tscn" id="9_n5sgd"]
+[ext_resource type="PackedScene" uid="uid://byp00uoj8rifo" path="res://scenes/components/health_component.tscn" id="9_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://choq8g4ehplrp" path="res://UI/ui.tscn" id="10_b6tgf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
+
+[sub_resource type="Animation" id="Animation_smehm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.863938, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "swing"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.863938, 0), Vector3(-1.02974, 0.863938, 0), Vector3(0, 0.863938, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
+_data = {
+&"RESET": SubResource("Animation_smehm"),
+&"swing": SubResource("Animation_fjrip")
+}
+
+[sub_resource type="GDScript" id="GDScript_tuyoq"]
+script/source = "extends CanvasLayer
+
+@onready var crop_amount = $CropAmount
+@onready var prompt = $Prompt
+
+
+func update_prompt_text(new_text : String):
+	prompt.text = new_text
+
+func update_crop_amount(crop_type, new_amount : int):
+	match crop_type:
+		CropTypes.CROP_TYPE.SWORD:
+			crop_amount.text = \"Sword \" + str(new_amount)
+"
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+transform = Transform3D(0.650045, 0, 0.759896, 0, 1, 0, -0.759896, 0, 0.650045, 0, 0, 0)
+script = ExtResource("1_4flbx")
+
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("2_qlg0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_4flbx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.587873, 0)
+script = ExtResource("2_onrkg")
+
+[node name="Interacter" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("Dirt")]
+script = ExtResource("4_tuyoq")
+crop_sword = ExtResource("5_fjrip")
+crop_mace = ExtResource("6_73kkf")
+Dirt = [null]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -2)
+
+[node name="SWORD" parent="Camera3D" instance=ExtResource("6_fjrip")]
+transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.467125, -0.883846, -0.675609)
+visible = false
+script = ExtResource("7_smehm")
+damage = 10.0
+
+[node name="CollisionShape3D" parent="Camera3D/SWORD/Area3D" index="0"]
+transform = Transform3D(0.301378, 0, 0, 0, 0.301378, 0, 0, 0, 0.301378, 0, 0.89315, -0.00058873)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/SWORD"]
+libraries = {
+&"": SubResource("AnimationLibrary_ur7pv")
+}
+
+[node name="BROKEN_MACE" parent="Camera3D" instance=ExtResource("9_n5sgd")]
+transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.511688, -0.782504, -0.730521)
+visible = false
+script = ExtResource("7_smehm")
+damage = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BROKEN_MACE"]
+libraries = {
+&"": SubResource("AnimationLibrary_ur7pv")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_tuyoq")
+
+[node name="CropAmount" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -23.0
+offset_right = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "text"
+horizontal_alignment = 1
+
+[node name="Prompt" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -11.0
+offset_right = 42.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "text"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_right = 1154.0
+offset_bottom = 647.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_qlg0r")
+
+[node name="HealthComponent" parent="." instance=ExtResource("9_ur7pv")]
+player = true
+
+[node name="HealthLbl" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="UI" parent="." instance=ExtResource("10_b6tgf")]
+
+[connection signal="body_entered" from="Camera3D/SWORD/Area3D" to="Camera3D/SWORD" method="damage_taken"]
+[connection signal="body_entered" from="Camera3D/BROKEN_MACE/Area3D" to="Camera3D/BROKEN_MACE" method="damage_taken"]
+
+[editable path="Camera3D/SWORD"]
+[editable path="Camera3D/BROKEN_MACE"]
+[editable path="UI"]

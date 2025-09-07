@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgybkvl66dtj0"]
+
+[ext_resource type="Script" uid="uid://sjgdxwqbce5q" path="res://general_scripts/crop.gd" id="1_1n4iu"]
+[ext_resource type="PackedScene" uid="uid://hjoudtxood0q" path="res://scenes/crops/weapons/sword/stages/sword_stg_3.tscn" id="2_mw3eb"]
+[ext_resource type="PackedScene" uid="uid://bokmv5n86weot" path="res://scenes/crops/weapons/sword/stages/sword_stg_2.tscn" id="3_3najt"]
+[ext_resource type="PackedScene" uid="uid://dd3ouj0rdwucq" path="res://scenes/crops/weapons/sword/stages/sword_stg_1.tscn" id="4_r80bo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej6i0"]
+height = 3.84062
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s4ec8"]
+height = 2.64396
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5whp"]
+height = 1.92452
+
+[node name="SWORD" type="StaticBody3D"]
+script = ExtResource("1_1n4iu")
+crop_type = "SWORD"
+growth_time_in_seconds = 60.0
+
+[node name="Large" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.643, 0)
+shape = SubResource("CapsuleShape3D_ej6i0")
+
+[node name="sword_stg3" parent="Large" instance=ExtResource("2_mw3eb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895572, 0)
+
+[node name="Medium" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12038, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_s4ec8")
+
+[node name="sword_stg2" parent="Medium" instance=ExtResource("3_3najt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378211, 0)
+
+[node name="Small" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711701, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_k5whp")
+
+[node name="sword_stg1" parent="Small" instance=ExtResource("4_r80bo")]

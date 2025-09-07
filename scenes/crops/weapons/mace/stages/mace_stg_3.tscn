@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://hkegm3tgeehy"]
+
+[ext_resource type="PackedScene" uid="uid://cwwv3pna1kcx6" path="res://assets/crops/weapons/mace/mace_stg3.glb" id="1_us7qy"]
+[ext_resource type="Material" uid="uid://dpy0i0tppqkc5" path="res://assets/materials/wood.tres" id="2_mmcss"]
+[ext_resource type="Material" uid="uid://puo0qqu4g2a7" path="res://assets/materials/metal.tres" id="3_rd8u2"]
+
+[node name="mace_stg3" instance=ExtResource("1_us7qy")]
+
+[node name="Cylinder" parent="." index="0"]
+material_override = ExtResource("2_mmcss")
+
+[node name="Sphere" parent="." index="1"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cylinder_001" parent="." index="2"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone" parent="." index="3"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_001" parent="." index="4"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_002" parent="." index="5"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_003" parent="." index="6"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_004" parent="." index="7"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_005" parent="." index="8"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_006" parent="." index="9"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_007" parent="." index="10"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_008" parent="." index="11"]
+material_override = ExtResource("3_rd8u2")
+
+[node name="Cone_009" parent="." index="12"]
+material_override = ExtResource("3_rd8u2")

@@ -1,0 +1,303 @@
+[gd_scene load_steps=19 format=3 uid="uid://qe13iuhtvaoi"]
+
+[ext_resource type="Script" uid="uid://cguxq3qy4nqh5" path="res://general_scripts/world.gd" id="1_71j4m"]
+[ext_resource type="PackedScene" uid="uid://dl8iqmloyfrfb" path="res://scenes/entities/player.tscn" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://chbi3j8xduugc" path="res://assets/textures/wood.jpg" id="3_k0juu"]
+[ext_resource type="Texture2D" uid="uid://ccy0mm64lpmbx" path="res://assets/textures/Dirt.jpg" id="4_71j4m"]
+[ext_resource type="PackedScene" uid="uid://banqrs0mdtxn7" path="res://scenes/entities/enemy.tscn" id="4_k0juu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+sky_top_color = Color(0.0366329, 0.0532976, 0.0765334, 1)
+sky_horizon_color = Color(0.110117, 1.63645e-06, 0.536467, 1)
+sky_curve = 0.106
+ground_bottom_color = Color(0.0366329, 0.0532976, 0.0765334, 1)
+ground_horizon_color = Color(0.110117, 1.63645e-06, 0.536467, 1)
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a0tk4"]
+background_mode = 2
+sky = SubResource("Sky_noarx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_71j4m"]
+vertices = PackedVector3Array(-10.4505, 0.185, 3.83, -4.4505, 0.185, 3.83, -4.2005, 0.185, 1.58, -10.4505, 0.185, -12.67, 4.2995, 0.185, 1.58, 4.5495, 0.185, 3.83, 10.5495, 0.185, 3.83, 10.5495, 0.185, -12.67, -3.4505, 1.285, 2.58, -3.4505, 1.285, 11.58, 3.5495, 1.285, 11.58, 3.5495, 1.285, 2.58, 1.04453, 1.035, 4.82697, -0.440487, 1.285, 4.81599, 1.02462, 1.035, 7.81487, -1.95535, 1.035, 9.33685, -0.460391, 1.285, 7.85388, -1.9454, 1.285, 7.8429, 2.54968, 1.035, 9.31981, 2.55963, 1.285, 7.82586, 2.52954, 1.285, 4.83796, -10.4505, 0.185, 12.58, -4.2005, 0.185, 12.58, 4.2995, 0.185, 12.58, 10.5495, 0.185, 12.58)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(10, 19, 11), PackedInt32Array(11, 13, 8), PackedInt32Array(8, 17, 9), PackedInt32Array(9, 15, 10), PackedInt32Array(19, 20, 11), PackedInt32Array(10, 18, 19), PackedInt32Array(13, 17, 8), PackedInt32Array(11, 12, 13), PackedInt32Array(17, 15, 9), PackedInt32Array(15, 18, 10), PackedInt32Array(20, 12, 11), PackedInt32Array(19, 14, 20), PackedInt32Array(18, 14, 19), PackedInt32Array(13, 16, 17), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 15), PackedInt32Array(15, 16, 18), PackedInt32Array(20, 14, 12), PackedInt32Array(18, 16, 14), PackedInt32Array(13, 14, 16), PackedInt32Array(0, 1, 21), PackedInt32Array(21, 1, 22), PackedInt32Array(6, 24, 5), PackedInt32Array(5, 24, 23)]
+cell_height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnet"]
+albedo_texture = ExtResource("3_k0juu")
+uv1_scale = Vector3(0.905, 0.905, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wyf3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwgxs"]
+size = Vector3(2.20913, 0.999999, 1.97186)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7141"]
+albedo_texture = ExtResource("4_71j4m")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
+size = Vector3(21.901, 0.23, 26.34)
+
+[sub_resource type="QuadMesh" id="QuadMesh_a202f"]
+
+[sub_resource type="Animation" id="Animation_qfnet"]
+resource_name = "day_and_night"
+length = 24.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.8326, 2.61799, 0), Vector3(-4.45059, 2.61799, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_i7141"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.8326, 2.61799, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mrxx"]
+_data = {
+&"RESET": SubResource("Animation_i7141"),
+&"day_and_night": SubResource("Animation_qfnet")
+}
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_71j4m")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, 0.482963, -0.12941, 0, -0.258819, -0.965926, -0.5, -0.836516, 0.224144, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a0tk4")
+
+[node name="Player" parent="." instance=ExtResource("1_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93119, 0)
+
+[node name="Interacter" parent="Player/Camera3D" index="0" node_paths=PackedStringArray("Dirt")]
+Dirt = [NodePath("../../../NavigationRegion3D/ground/fertile/Dirt"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt2"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt3"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt4"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt5"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt6"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt7"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt8"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt9"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt10"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt11"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt12")]
+
+[node name="Sword" parent="Player/Camera3D" index="2"]
+transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.467125, -0.883846, -0.675609)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_71j4m")
+
+[node name="ground" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.29976)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/ground"]
+transform = Transform3D(7.64754, 0, 0, 0, 0.977015, 0, 0, 0, 9.74872, 0, 0.461023, -1.24769)
+material_override = SubResource("StandardMaterial3D_qfnet")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="fertile" type="Node3D" parent="NavigationRegion3D/ground"]
+
+[node name="Dirt" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, 2.48246)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt2" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, 2.48246)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt2"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt2"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt3" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, 2.48246)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt3"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt3"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt4" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, 0.0134211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt4"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt4"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt5" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, 0.0134211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt5"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt5"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt6" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, 0.0134211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt6"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt6"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt7" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, -2.45507)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt7"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt7"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt8" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, -2.45507)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt8"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt8"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt9" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, -2.45507)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt9"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt9"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt10" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, -4.91488)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt10"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt10"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt11" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, -4.91488)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt11"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt11"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="Dirt12" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, -4.91488)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt12"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/ground/fertile/Dirt12"]
+transform = Transform3D(2.20913, 0, 0, 0, 0.999999, 0, 0, 0, 1.97186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i7141")
+mesh = SubResource("BoxMesh_4wyf3")
+skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(21.9007, 0, 0, 0, -1.15135e-06, 1, 0, -26.3397, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_a202f")
+
+[node name="Enemy" parent="." instance=ExtResource("4_k0juu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25676, 0.927939, -6.53726)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4mrxx")
+}
+
+[editable path="Player"]
