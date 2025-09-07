@@ -7,3 +7,5 @@ There's only 2 weapons right now:
 A broken mace
 and a sword
 Get them through the shop and grow them through their seed.
+Enemies can drop water and mutated water orbs and a very rare radioactive vial... this vial may crash the game
+Anyways this game is under development and will be my siege project for all 13 weeks hopefully?
