@@ -569,8 +569,8 @@ shape = SubResource("RectangleShape2D_e6gg6")
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1111.0
-offset_right = 1151.0
+offset_left = 1239.0
+offset_right = 1279.0
 offset_bottom = 23.0
 horizontal_alignment = 2
 
@@ -681,9 +681,9 @@ text = "Close
 script = ExtResource("3_e6gg6")
 
 [node name="Label" type="Label" parent="Controls"]
-offset_left = 991.0
+offset_left = 1117.0
 offset_top = 91.0
-offset_right = 1125.0
+offset_right = 1251.0
 offset_bottom = 192.0
 text = "Inventory - Q
 Interact - E
@@ -692,11 +692,11 @@ Attack - Left Click"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 988.0
+offset_left = 1101.0
 offset_top = 64.0
-offset_right = 1153.0
+offset_right = 1266.0
 offset_bottom = 87.0
-text = "Press Esc for controls"
+text = "Press c for controls"
 horizontal_alignment = 2
 
 [connection signal="pressed" from="Shop/Close" to="Shop" method="close"]

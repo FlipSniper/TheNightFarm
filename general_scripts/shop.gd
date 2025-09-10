@@ -21,6 +21,11 @@ var trades := {
 		"cost": {"RADIOACTIVE VIAL": 1},
 		"icon": "res://assets/icons/coin.png",
 		"reward": {"COINS": 50} 
+	},
+	"FIREBALL_SEED": {
+		"cost": {"COINS": 350, "WATER": 10},
+		"icon": "res://assets/icons/coin.png",
+		"reward": {"FIREBALL_SEED" : 1} 
 	}
 }
 

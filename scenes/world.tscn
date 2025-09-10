@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dl8iqmloyfrfb" path="res://scenes/entities/player.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://chbi3j8xduugc" path="res://assets/textures/wood.jpg" id="3_k0juu"]
 [ext_resource type="Texture2D" uid="uid://ccy0mm64lpmbx" path="res://assets/textures/Dirt.jpg" id="4_71j4m"]
-[ext_resource type="PackedScene" uid="uid://banqrs0mdtxn7" path="res://scenes/entities/enemies/enemy.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://nr6mfxir5gfq" path="res://scenes/shop.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://cue3su50sgqxw" path="res://scenes/entities/chef.tscn" id="7_i7141"]
+[ext_resource type="PackedScene" uid="uid://cnipvp8h5ocbr" path="res://scenes/entities/enemies/enemy.tscn" id="8_4mrxx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
 sky_top_color = Color(0.0366329, 0.0532976, 0.0765334, 1)
@@ -111,7 +111,7 @@ _data = {
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("spawns")]
 script = ExtResource("1_71j4m")
-enemy = ExtResource("4_k0juu")
+enemy = ExtResource("8_4mrxx")
 spawns = [NodePath("spawns/spawn1"), NodePath("spawns/spawn2"), NodePath("spawns/spawn3"), NodePath("spawns/spawn4"), NodePath("spawns/spawn5"), NodePath("spawns/spawn6"), NodePath("spawns/spawn7")]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -124,8 +124,11 @@ environment = SubResource("Environment_a0tk4")
 [node name="Player" parent="." instance=ExtResource("1_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93119, 0)
 
-[node name="Interacter" parent="Player/Camera3D" index="0" node_paths=PackedStringArray("Dirt")]
-Dirt = [NodePath("../../../NavigationRegion3D/ground/fertile/Dirt"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt2"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt3"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt4"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt5"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt6"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt7"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt8"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt9"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt10"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt11"), NodePath("../../../NavigationRegion3D/ground/fertile/Dirt12")]
+[node name="SWORD" parent="Player/Camera3D" index="2"]
+transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.467125, -0.883846, -0.675609)
+
+[node name="BROKEN_MACE" parent="Player/Camera3D" index="3"]
+transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.511688, -0.782504, -0.730521)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_71j4m")
@@ -294,9 +297,6 @@ shape = SubResource("BoxShape3D_4xowi")
 transform = Transform3D(21.9007, 0, 0, 0, -1.15135e-06, 1, 0, -26.3397, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_a202f")
 
-[node name="Enemy" parent="." instance=ExtResource("4_k0juu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25676, 0.927939, -6.53726)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_4mrxx")
@@ -331,8 +331,10 @@ transform = Transform3D(-2.53974e-08, 0, -0.581025, 0, 0.581025, 0, 0.581025, 0,
 [node name="chef" parent="shop" instance=ExtResource("7_i7141")]
 transform = Transform3D(-3.22228e-08, 0, -0.737171, 0, 0.737171, 0, 0.737171, 0, -3.22228e-08, 0, 0.459334, 0)
 
-[connection signal="body_entered" from="Player/Camera3D/SWORD/Area3D" to="Player/Camera3D/SWORD" method="damage_taken"]
+[node name="Enemy" parent="." instance=ExtResource("8_4mrxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98448, 1.14461, -5.91104)
 
 [editable path="Player"]
 [editable path="Player/Camera3D/SWORD"]
+[editable path="Player/Camera3D/BROKEN_MACE"]
 [editable path="Player/UI"]

@@ -4,12 +4,13 @@ signal inventory_updated(item_name, new_amount)
 
 # Inventory dictionary (item name → amount)
 @onready var inventory = {
-	"SWORD": 0,
+	"SWORD": 1,
 	"SWORD_SEED": 0,
 	"BROKEN_MACE": 0,
 	"BROKEN_MACE_SEED": 0,
-	"COINS": 20,
-	"WATER": 1
+	"COINS": 400,
+	"WATER": 20,
+	"FIREBALL": 1
 }
 
 # Add items to inventory (works for any item)

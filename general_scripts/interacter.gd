@@ -8,7 +8,7 @@ signal update_prompt_text(new_text : String)
 
 @export var crop_sword : PackedScene
 @export var crop_mace : PackedScene
-@export var Dirt : Array[Node3D]
+@export var crop_fireball : PackedScene
 @onready var Unavailable = []
 @onready var pairs = {}
 
@@ -27,8 +27,6 @@ func _process(delta: float) -> void:
 		$"../../UI/Shop".visible = true
 
 	if Input.is_action_just_pressed("plant") and ray.is_colliding() and obj and obj.get_parent().name == "fertile" and obj not in Unavailable:
-		print("pls")
-		print(player.seed_equipped)
 		if player.seed_equipped.to_lower() == "sword_seed" and Inventory.inventory["SWORD_SEED"] > 0:
 			Inventory.use_item("SWORD_SEED",1)
 			Unavailable.append(obj)
@@ -37,10 +35,16 @@ func _process(delta: float) -> void:
 			pairs[crop_instance] = obj
 			crop_instance.global_transform.origin = obj.global_transform.origin
 		elif player.seed_equipped.to_lower() == "broken_mace_seed" and Inventory.inventory["BROKEN_MACE_SEED"] > 0:
-			print("her")
 			Inventory.use_item("BROKEN_MACE_SEED",1)
 			Unavailable.append(obj)
 			var crop_instance = crop_mace.instantiate()
+			get_tree().get_root().add_child(crop_instance)
+			pairs[crop_instance] = obj
+			crop_instance.global_transform.origin = obj.global_transform.origin
+		elif player.seed_equipped.to_lower() == "fireball_seed" and Inventory.inventory["FIREBALL_SEED"] > 0:
+			Inventory.use_item("FIREBALL_SEED",1)
+			Unavailable.append(obj)
+			var crop_instance = crop_fireball.instantiate()
 			get_tree().get_root().add_child(crop_instance)
 			pairs[crop_instance] = obj
 			crop_instance.global_transform.origin = obj.global_transform.origin

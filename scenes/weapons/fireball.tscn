@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwkpr5pkwgbci"]
+
+[ext_resource type="Script" uid="uid://ds4r4jf8v7j0u" path="res://general_scripts/fireball.gd" id="1_bxiq0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu6q0"]
+albedo_color = Color(1, 0.278431, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.278431, 0, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_jve0i"]
+radial_segments = 24
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5y0vp"]
+
+[node name="FIREBALL" type="Node3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("1_bxiq0")
+damage = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.791306, 0, 5.96046e-08, 0, 0.791306, 0, -5.96046e-08, 0, 0.791306, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uu6q0")
+mesh = SubResource("SphereMesh_jve0i")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_5y0vp")
+
+[connection signal="body_entered" from="Area3D" to="." method="damage_taken"]
