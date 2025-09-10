@@ -569,8 +569,8 @@ shape = SubResource("RectangleShape2D_e6gg6")
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1239.0
-offset_right = 1279.0
+offset_left = 1120.0
+offset_right = 1160.0
 offset_bottom = 23.0
 horizontal_alignment = 2
 

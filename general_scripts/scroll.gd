@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	if visible:
 		sword.swing = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if !$"../Controls".visible and !visible and !$"../Shop".visible:
+	if !visible and !$"../Shop".visible:
 		sword.swing = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

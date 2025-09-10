@@ -50,7 +50,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif !$"../InventoryUI".visible and !visible and !$"../Controls".visible:
+	elif !$"../InventoryUI".visible and !visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _update_all_cost_labels() -> void:
