@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://banqrs0mdtxn7"]
+[gd_scene load_steps=17 format=3 uid="uid://banqrs0mdtxn7"]
 
 [ext_resource type="PackedScene" uid="uid://byp00uoj8rifo" path="res://scenes/components/health_component.tscn" id="2_md0e3"]
 [ext_resource type="PackedScene" uid="uid://b8i7l4w2p2wl" path="res://scenes/weapons/player_sword.tscn" id="6_j3iiu"]
@@ -14,6 +14,15 @@
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_md0e3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu215"]
+albedo_color = Color(0.454524, 0.454524, 0.454524, 1)
+albedo_texture = ExtResource("11_w6k81")
+
+[sub_resource type="TorusMesh" id="TorusMesh_27tcs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mag4a"]
+size = Vector3(4.02, 0.315, 1.266)
 
 [sub_resource type="Animation" id="Animation_wyqsp"]
 length = 0.001
@@ -40,6 +49,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.449132, -0.510945, -0.420412)]
+}
+
+[sub_resource type="Animation" id="Animation_1c342"]
+resource_name = "get_away"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.75, 1.1, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.449132, -0.510945, -0.420412), Vector3(-0.00346264, -0.510945, -1.07708), Vector3(-0.00346264, 1.34049, -1.07708), Vector3(-0.003, 0.725, -1.077), Vector3(-0.003, 0.56, -1.077), Vector3(0.449132, -0.510945, -0.420412)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.75, 1.1, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 3.14159), Vector3(0, 0, 3.14159), Vector3(0, 0, 3.14159), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_uu37f"]
@@ -73,17 +110,9 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6k81"]
 _data = {
 &"RESET": SubResource("Animation_wyqsp"),
+&"get_away": SubResource("Animation_1c342"),
 &"swing": SubResource("Animation_uu37f")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu215"]
-albedo_color = Color(0.454524, 0.454524, 0.454524, 1)
-albedo_texture = ExtResource("11_w6k81")
-
-[sub_resource type="TorusMesh" id="TorusMesh_27tcs"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mag4a"]
-size = Vector3(4.01981, 1, 1.26575)
 
 [node name="Boss" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("10_w6k81")
@@ -109,6 +138,45 @@ enemy_level = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0044353, 0.458336, 0.00402236)
 target_position = Vector3(0, 0, -1.5)
 
+[node name="attack_air" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502537, 2.00553)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="attack_air"]
+transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, 0, 0.857365, -2.0032)
+material_override = SubResource("StandardMaterial3D_fu215")
+mesh = SubResource("TorusMesh_27tcs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="attack_air"]
+transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, -1.44259, 0.857365, -1.4859)
+material_override = SubResource("StandardMaterial3D_fu215")
+mesh = SubResource("TorusMesh_27tcs")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="attack_air"]
+transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, -2.78706, 0.857365, -0.823283)
+material_override = SubResource("StandardMaterial3D_fu215")
+mesh = SubResource("TorusMesh_27tcs")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="attack_air"]
+transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, 2.65349, 0.857365, -0.888303)
+material_override = SubResource("StandardMaterial3D_fu215")
+mesh = SubResource("TorusMesh_27tcs")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="attack_air"]
+transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, 1.3741, 0.857365, -1.60269)
+material_override = SubResource("StandardMaterial3D_fu215")
+mesh = SubResource("TorusMesh_27tcs")
+
+[node name="Area3D" type="Area3D" parent="attack_air"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.857365, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="attack_air/Area3D"]
+transform = Transform3D(0.941282, 0, -0.337621, 0, 1, 0, 0.337621, 0, 0.941282, 1.45964, 0, -1.66643)
+shape = SubResource("BoxShape3D_mag4a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="attack_air/Area3D"]
+transform = Transform3D(0.942665, 0, 0.333741, 0, 1, 0, -0.333741, 0, 0.942665, -1.47533, 0, -1.48172)
+shape = SubResource("BoxShape3D_mag4a")
+
 [node name="Sword" parent="." instance=ExtResource("6_j3iiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449132, -0.510945, -0.420412)
 script = ExtResource("7_bii57")
@@ -124,45 +192,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_w6k81")
 }
 
-[node name="attack_air" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.470468)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="attack_air"]
-transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, 0, 0, -2.0032)
-material_override = SubResource("StandardMaterial3D_fu215")
-mesh = SubResource("TorusMesh_27tcs")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="attack_air"]
-transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, -1.44259, 0, -1.4859)
-material_override = SubResource("StandardMaterial3D_fu215")
-mesh = SubResource("TorusMesh_27tcs")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="attack_air"]
-transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, -2.78706, 0, -0.823283)
-material_override = SubResource("StandardMaterial3D_fu215")
-mesh = SubResource("TorusMesh_27tcs")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="attack_air"]
-transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, 2.65349, 0, -0.888303)
-material_override = SubResource("StandardMaterial3D_fu215")
-mesh = SubResource("TorusMesh_27tcs")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="attack_air"]
-transform = Transform3D(0.703394, 0, 0, 0, 0.474628, 0, 0, 0, 0.703394, 1.3741, 0, -1.60269)
-material_override = SubResource("StandardMaterial3D_fu215")
-mesh = SubResource("TorusMesh_27tcs")
-
-[node name="Area3D" type="Area3D" parent="attack_air"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="attack_air/Area3D"]
-transform = Transform3D(0.941282, 0, -0.337621, 0, 1, 0, 0.337621, 0, 0.941282, 1.45964, 0, -1.66643)
-shape = SubResource("BoxShape3D_mag4a")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="attack_air/Area3D"]
-transform = Transform3D(0.942665, 0, 0.333741, 0, 1, 0, -0.333741, 0, 0.942665, -1.47533, 0, -1.48172)
-shape = SubResource("BoxShape3D_mag4a")
-
-[connection signal="body_entered" from="attack_air/Area3D" to="Sword" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="attack_air/Area3D" to="Sword" method="damage_taken"]
 
 [editable path="Sword"]

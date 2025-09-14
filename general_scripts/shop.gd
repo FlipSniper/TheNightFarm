@@ -2,27 +2,27 @@ extends CanvasLayer
 
 # Example trades
 var trades := {
-	"SWORD_SEED": {
+	"SWORD SEED": {
 		"cost": {"COINS": 15, "WATER": 1},
 		"icon": "res://assets/icons/sword.png",
 		"reward": {"SWORD_SEED": 1}
 	},
-	"BORKEN_MACE_SEED": {
+	"BORKEN MACE SEED": {
 		"cost": {"COINS": 100, "WATER": 5},
 		"icon": "res://assets/icons/mace.png",
 		"reward": {"MACE_SEED": 1}
 	},
-	"SELL_MUTATED_WATER_ORB": {
+	"10 Coins": {
 		"cost": {"MUTATED WATER ORB": 1},
 		"icon": "res://assets/icons/coin.png",
 		"reward": {"COINS": 10} 
 	},
-	"SELL_RADIOACTIVE_VIAL": {
+	"50 Coins": {
 		"cost": {"RADIOACTIVE VIAL": 1},
 		"icon": "res://assets/icons/coin.png",
 		"reward": {"COINS": 50} 
 	},
-	"FIREBALL_SEED": {
+	"FIREBALL SEED": {
 		"cost": {"COINS": 350, "WATER": 10},
 		"icon": "res://assets/icons/coin.png",
 		"reward": {"FIREBALL_SEED" : 1} 

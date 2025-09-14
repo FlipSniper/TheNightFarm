@@ -5,61 +5,85 @@ extends CharacterBody3D
 @export var MaxDistance: float = 10.0
 @export var AttackCooldown: float = 2.0
 @export var AttackDuration: float = 1.5
+@export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export var shockwave_scene: PackedScene
 
 @onready var player: CharacterBody3D = get_tree().current_scene.get_node("Player")
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var anim: AnimationPlayer = $Sword/AnimationPlayer
-@onready var ray: RayCast3D = $RayCast3D
-
-@export var drops: Array[PackedScene]
 
 var attack_timer: float = 0.0
 var in_attack: bool = false
-var direction: Vector3 = Vector3.ZERO
+var cooldown_timer: float = 0.0
 
-func _ready():
-	pass
-
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if not player:
 		return
 
-	var distance = global_position.distance_to(player.global_position)
+	# Apply gravity
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		velocity.y = 0
+
+	var distance := global_position.distance_to(player.global_position)
 
 	if in_attack:
-		# Boss stays still while attacking
-		velocity = Vector3.ZERO
-		move_and_slide()
+		# Stand still and stop rotating
+		velocity.x = 0
+		velocity.z = 0
 		attack_timer -= delta
 		if attack_timer <= 0:
 			in_attack = false
 	else:
-		# Maintain distance
+		cooldown_timer -= delta
+
+		# Smart distancing behavior
 		if distance < MinDistance:
-			direction = (global_position - player.global_position).normalized()
+			# Too close → back up
+			var dir = (global_position - player.global_position).normalized()
+			velocity.x = dir.x * RunSpeed
+			velocity.z = dir.z * RunSpeed
 		elif distance > MaxDistance:
-			direction = (player.global_position - global_position).normalized()
+			# Too far → move closer
+			navigation_agent.target_position = player.global_position
+			if not navigation_agent.is_navigation_finished():
+				var next_pos = navigation_agent.get_next_path_position()
+				var dir = (next_pos - global_position).normalized()
+				velocity.x = dir.x * RunSpeed
+				velocity.z = dir.z * RunSpeed
+			else:
+				velocity.x = 0
+				velocity.z = 0
 		else:
-			direction = Vector3.ZERO
+			# Perfect range → stay still
+			velocity.x = 0
+			velocity.z = 0
 
-		velocity = direction * RunSpeed
-		move_and_slide()
+			# If cooldown is up, attack
+			if cooldown_timer <= 0:
+				start_attack()
 
-		# Face player
-		if direction.length() > 0.01:
-			var target = global_position + Vector3(direction.x, 0, direction.z)
-			global_transform.basis = global_transform.basis.slerp(
-				global_transform.looking_at(target, Vector3.UP).basis,
-				delta * 5.0
-			)
+		# Only rotate to face player if not attacking
+		var look_target = Vector3(player.global_position.x, global_position.y, player.global_position.z)
+		look_at(look_target, Vector3.UP)
 
-		# Random chance to attack if player in range
-		if distance <= MaxDistance and randi_range(0, 200) > 198:
-			start_attack()
+	move_and_slide()
 
-func start_attack():
+func start_attack() -> void:
 	in_attack = true
 	attack_timer = AttackDuration
+	cooldown_timer = AttackCooldown
+	velocity = Vector3.ZERO
 	anim.play("swing")
 	$Sword.enemy_attack()
-	# Here you can trigger effects/projectiles/etc
+
+func get_away():
+	in_attack = true
+	attack_timer = AttackDuration
+	AttackCooldown
+	velocity = Vector3.ZERO
+	anim.play("get_away")
+	var shockwave = shockwave_scene.instantiate()
+	get_tree().current_scene.add_child(shockwave)
+	shockwave.global_position = global_position
