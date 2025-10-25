@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6q0n1t61lxmm"]
+[gd_scene load_steps=17 format=3 uid="uid://c6q0n1t61lxmm"]
 
 [ext_resource type="Script" uid="uid://dq8566xenp0q0" path="res://UI/main_menu.gd" id="1_4cwpn"]
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_p8ccj"]
 [ext_resource type="Texture2D" uid="uid://cprv22fqk2wmn" path="res://assets/textures/qwantani_dusk_2_1k.hdr" id="1_tk8dj"]
 [ext_resource type="Texture2D" uid="uid://ccy0mm64lpmbx" path="res://assets/textures/Dirt.jpg" id="3_d8nwk"]
+[ext_resource type="Texture2D" uid="uid://gccxfycqta6l" path="res://assets/textures/leaf.png" id="5_f40uw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p8ccj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,6 +44,23 @@ uv1_scale = Vector3(15.235, 15.235, 1)
 albedo_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_4cwpn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ctay"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(10.565, 2.01, 4.005)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, -1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ev3b6"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("5_f40uw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k0a0m"]
+material = SubResource("StandardMaterial3D_ev3b6")
 
 [node name="Node" type="Node"]
 script = ExtResource("1_4cwpn")
@@ -162,11 +180,12 @@ transform = Transform3D(35.585, 0, 0, 0, 11.37, 0, 0, 0, 1, 0, 3.7365258, -6.430
 material_override = SubResource("StandardMaterial3D_d8nwk")
 mesh = SubResource("QuadMesh_4cwpn")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Node3D"]
+[node name="CPUParticles3D" type="GPUParticles3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.219582, -2.3051417)
 amount = 2
-emission_shape = 3
-emission_box_extents = Vector3(10.565, 2.01, 4.005)
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_8ctay")
+draw_pass_1 = SubResource("PlaneMesh_k0a0m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8433557)
