@@ -89,6 +89,7 @@ func get_away():
 	AttackCooldown
 	velocity = Vector3.ZERO
 	anim.play("get_away")
+	await get_tree().create_timer(1.5).timeout
 	var shockwave = shockwave_scene.instantiate()
 	get_tree().current_scene.add_child(shockwave)
 	shockwave.global_position = global_position

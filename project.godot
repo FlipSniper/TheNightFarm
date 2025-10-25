@@ -102,6 +102,14 @@ fireball={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Environment"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemy"
+3d_physics/layer_4="Enemy Weapon"
+3d_physics/layer_5="Player Weapon"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

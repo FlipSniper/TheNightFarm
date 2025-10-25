@@ -16,6 +16,7 @@ height = 2.64396
 height = 1.92452
 
 [node name="Mace" type="StaticBody3D"]
+collision_mask = 7
 script = ExtResource("1_eeufs")
 crop_type = "BROKEN_MACE"
 growth_time_in_seconds = 5.0

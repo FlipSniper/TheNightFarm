@@ -74,6 +74,8 @@ func update_crop_amount(crop_type, new_amount : int):
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(0.650045, 0, 0.759896, 0, 1, 0, -0.759896, 0, 0.650045, 0, 0, 0)
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_4flbx")
 FIREBALL = ExtResource("2_5ki56")
 

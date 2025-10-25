@@ -130,7 +130,7 @@ enemy = ExtResource("8_4mrxx")
 spawns = [NodePath("spawns/spawn1"), NodePath("spawns/spawn2"), NodePath("spawns/spawn3"), NodePath("spawns/spawn4"), NodePath("spawns/spawn5"), NodePath("spawns/spawn6"), NodePath("spawns/spawn7")]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, 0.482965, -0.129412, 0, -0.258823, -0.965925, -0.500003, -0.836513, 0.224147, 0, 0, 0)
+transform = Transform3D(-0.86602294, 0.4829652, -0.12941247, 0, -0.25882298, -0.96592486, -0.50000304, -0.83651286, 0.22414699, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -138,12 +138,6 @@ environment = SubResource("Environment_a0tk4")
 
 [node name="Player" parent="." instance=ExtResource("1_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93119, 0)
-
-[node name="SWORD" parent="Player/Camera3D" index="2"]
-transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.467125, -0.883846, -0.675609)
-
-[node name="BROKEN_MACE" parent="Player/Camera3D" index="3"]
-transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.511688, -0.782504, -0.730521)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_71j4m")
@@ -161,6 +155,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, 2.48246)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -173,6 +168,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt2" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, 2.48246)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt2"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -185,6 +181,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt3" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, 2.48246)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt3"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -197,6 +194,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt4" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, 0.0134211)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt4"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -209,6 +207,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt5" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, 0.0134211)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt5"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -221,6 +220,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt6" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, 0.0134211)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt6"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -233,6 +233,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt7" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, -2.45507)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt7"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -245,6 +246,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt8" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, -2.45507)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt8"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -257,6 +259,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt9" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, -2.45507)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt9"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -269,6 +272,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt10" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45344, 0.70264, -4.91488)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt10"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -281,6 +285,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt11" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562553, 0.70264, -4.91488)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt11"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -293,6 +298,7 @@ skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15
 
 [node name="Dirt12" type="StaticBody3D" parent="NavigationRegion3D/ground/fertile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, 0.70264, -4.91488)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ground/fertile/Dirt12"]
 shape = SubResource("BoxShape3D_rwgxs")
@@ -304,6 +310,7 @@ mesh = SubResource("BoxMesh_4wyf3")
 skeleton = NodePath("../../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/World")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_4xowi")
@@ -317,6 +324,7 @@ transform = Transform3D(1, 0, 0, 0, 4.78003, 0, 0, 0, 27.227, -11.2009, 2.35379,
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_4mrxx")
@@ -326,6 +334,7 @@ transform = Transform3D(1, 0, 0, 0, 4.78003, 0, 0, 0, 27.227, 10.9138, 2.35379, 
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D2"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_7r4gi")
@@ -335,6 +344,7 @@ transform = Transform3D(-4.37114e-08, 0, 27.227, 0, 4.78003, 0, -1, 0, -1.19013e
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D3"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_w7kh3")
@@ -344,6 +354,7 @@ transform = Transform3D(-4.37114e-08, 0, 27.227, 0, 4.78003, 0, -1, 0, -1.19013e
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D4"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_e3hyu")
@@ -387,6 +398,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98448, 1.14461, -5.91104)
 
 [node name="Boss" parent="." instance=ExtResource("8_7r4gi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30218, -4.87441)
+
+[connection signal="body_entered" from="Player/Camera3D/SWORD/Area3D" to="Player/Camera3D/SWORD" method="damage_taken"]
+[connection signal="body_entered" from="Player/Camera3D/BROKEN_MACE/Area3D" to="Player/Camera3D/BROKEN_MACE" method="damage_taken"]
 
 [editable path="Player"]
 [editable path="Player/Camera3D/SWORD"]

@@ -529,6 +529,8 @@ mesh = SubResource("ArrayMesh_dt6o2")
 skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 29
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.301378, 0, 0, 0, 0.301378, 0, 0, 0, 0.301378, 0, 0.760164, -0.000588736)

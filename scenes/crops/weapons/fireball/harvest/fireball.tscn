@@ -13,6 +13,7 @@ height = 1.26043
 radius = 0.765
 
 [node name="Fireball" type="StaticBody3D"]
+collision_mask = 7
 script = ExtResource("1_tbtbg")
 crop_type = "FIREBALL"
 growth_time_in_seconds = 1.0
