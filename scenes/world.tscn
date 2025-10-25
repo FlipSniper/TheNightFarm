@@ -135,7 +135,7 @@ _data = {
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("spawns")]
 script = ExtResource("1_71j4m")
-enemy = ExtResource("8_4mrxx")
+enemy = Array[PackedScene]([ExtResource("8_4mrxx"), ExtResource("8_7r4gi")])
 spawns = [NodePath("spawns/spawn1"), NodePath("spawns/spawn2"), NodePath("spawns/spawn3"), NodePath("spawns/spawn4"), NodePath("spawns/spawn5"), NodePath("spawns/spawn6"), NodePath("spawns/spawn7")]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -409,9 +409,6 @@ transform = Transform3D(-3.22228e-08, 0, -0.737171, 0, 0.737171, 0, 0.737171, 0,
 
 [node name="Enemy" parent="." instance=ExtResource("8_4mrxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98448, 1.14461, -5.91104)
-
-[node name="Boss" parent="." instance=ExtResource("8_7r4gi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30218, -4.87441)
 
 [editable path="Player"]
 [editable path="Player/Camera3D/SWORD"]

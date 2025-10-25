@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Night Farm"
-run/main_scene="uid://c6q0n1t61lxmm"
+run/main_scene="uid://qe13iuhtvaoi"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

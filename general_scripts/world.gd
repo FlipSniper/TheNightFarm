@@ -15,7 +15,7 @@ extends Node3D
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@export var enemy : PackedScene
+@export var enemy : Array[PackedScene]
 @export var spawns : Array[Node3D]
 var dayDuration := 24.0
 var currentDayState := 0
@@ -88,12 +88,18 @@ func _day_change_animation():
 func _process(delta: float) -> void:
 	var rng = randi_range(1,3000)
 	var rng2 = randi_range(0,6)
+	var rng3 = randi_range(0,10)
 	var obj = spawns[rng2]
 	if rng >2997 and (currentTime < 7.0 or currentTime > 18.0):
 		print("spawn")
-		var enemy_instance = enemy.instantiate()
-		get_tree().get_root().add_child(enemy_instance)
-		enemy_instance.global_transform.origin = obj.global_transform.origin
+		if rng3 == 10:
+			var enemy_instance = enemy[1].instantiate()
+			get_tree().get_root().add_child(enemy_instance)
+			enemy_instance.global_transform.origin = obj.global_transform.origin
+		if rng3 != 10:
+			var enemy_instance = enemy[0].instantiate()
+			get_tree().get_root().add_child(enemy_instance)
+			enemy_instance.global_transform.origin = obj.global_transform.origin
 	var hours_per_second = dayDuration / float(dayLengthInSeconds)
 	currentTime += hours_per_second * delta
 
