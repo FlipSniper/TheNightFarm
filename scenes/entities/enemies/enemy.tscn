@@ -34,6 +34,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5171079, 0.11330956, -0.29946265)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../arm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7515458, 1.1756486, 0.45276418)]
+}
 
 [sub_resource type="Animation" id="Animation_uu37f"]
 resource_name = "swing"
@@ -48,6 +72,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-1.00356, 0.204204, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../arm:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.61, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5171079, 0.11330956, -0.29946265), Vector3(0.539642, 0.023977846, -0.3532595), Vector3(0.5348258, 0.1335239, -0.4207236), Vector3(0.5171079, 0.11330956, -0.29946265)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../arm:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.61, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.7515458, 1.1756486, 0.45276418), Vector3(0.8560157, 1.4787847, 0.68434006), Vector3(0.75223696, 1.3072516, 0.37350047), Vector3(0.7515458, 1.1756486, 0.45276418)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6k81"]
@@ -66,7 +114,23 @@ drops = Array[PackedScene]([ExtResource("2_uq1c4"), ExtResource("3_lwjnx"), ExtR
 shape = SubResource("CapsuleShape3D_8tegq")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.764206, 0, 0, 0, 0.452785, 0, 0, 0, 0.513585, 0, 0.409982, -0.47804)
+transform = Transform3D(0.23153248, 0, 0, 0, 0.1554612, 0, 0, 0, 0.513585, -0.23312567, 0.59901047, -0.32383993)
+mesh = SubResource("BoxMesh_md0e3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.52141255, 0, 0, 0, 0.1554612, 0, 0, 0, 0.513585, -0.00937961, 0.26765552, -0.32383993)
+mesh = SubResource("BoxMesh_md0e3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.23153248, 0, 0, 0, 0.1554612, 0, 0, 0, 0.513585, 0.19834435, 0.59901047, -0.32707933)
+mesh = SubResource("BoxMesh_md0e3")
+
+[node name="arm" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.47519937, 0.06795332, 0.12218787, 0.24425407, 0.11210211, -0.12371674, -0.5463848, 0.109213814, 0.050962757, 0.5171079, 0.11330956, -0.29946265)
+mesh = SubResource("BoxMesh_md0e3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.45032203, 0.0851954, -0.1150922, -0.2595222, 0.1478308, 0.06632805, 0.5602402, 0, 0.12323669, -0.6145951, 0.11330956, -0.3029513)
 mesh = SubResource("BoxMesh_md0e3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -98,18 +162,24 @@ script = ExtResource("8_cxt0g")
 metadata/_custom_type_script = "uid://ce7u7xqv7pe77"
 
 [node name="Sword" parent="." instance=ExtResource("9_0t5nu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449132, -0.510945, -0.420412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8087754, 0.13338985, -0.5278658)
 script = ExtResource("10_kkli6")
 
+[node name="Cube" parent="Sword" index="0"]
+transform = Transform3D(0.044462, 0, 0, 0, 0.208943, 0, 0, 0, 0.044462, 0, 0.20596933, -0.0005887151)
+
+[node name="Cube_001" parent="Sword" index="1"]
+transform = Transform3D(0.044462, 0, 0, 0, 0.208943, 0, 0, 0, 0.044462, 0, 0.22180933, -0.0005887151)
+
 [node name="Cube_002" parent="Sword" index="2"]
-transform = Transform3D(0.0301018, 0, 0, 0, 0.683153, 0, 0, 0, 0.0301018, 0, 1.10358, -0.00160462)
+transform = Transform3D(0.0301018, 0, 0, 0, 0.683153, 0, 0, 0, 0.0301018, 0, 0.87259233, -0.0016046166)
 
 [node name="Area3D" parent="Sword" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0036371648, 0)
 collision_layer = 8
-collision_mask = 29
 
 [node name="CollisionShape3D" parent="Sword/Area3D" index="0"]
-transform = Transform3D(0.301378, 0, 0, 0, 0.301378, 0, 0, 0, 0.301378, -0.00463724, 1.20333, -0.0023087)
+transform = Transform3D(0.301378, 0, 0, 0, 0.301378, 0, 0, 0, 0.301378, -0.0046372414, 1.0797597, -0.0023087263)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
 libraries = {

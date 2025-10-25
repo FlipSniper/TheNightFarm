@@ -2,7 +2,7 @@ extends Node
 var label = 0
 var prev_label = 0
 var skippable = false
-@onready var particle = $Node3D/CPUParticles3D
+@onready var particle = $props/CPUParticles3D
 func _ready() -> void:
 	$Story/fade.visible = true
 	$Story/AnimationPlayer.play("fade")
@@ -40,7 +40,7 @@ func label2():
 	await get_tree().create_timer(6.3).timeout
 	skippable = true
 	$Sounds/rage_wind.play()
-	particle.amount = 500
+	particle.amount = 500.0
 func label3():
 	$Story/Label2.visible = false
 	skippable = false
@@ -55,5 +55,6 @@ func label4():
 	$Story/Label4.visible = true
 	$Sounds/Narrator2.play()
 	await get_tree().create_timer(5).timeout
+	$spawns.spawn()
 	$Sounds/grr.play()
 	skippable = true

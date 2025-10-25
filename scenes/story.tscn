@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4f6gnvoptru2"]
+[gd_scene load_steps=29 format=3 uid="uid://c4f6gnvoptru2"]
 
 [ext_resource type="Script" uid="uid://57u41rq3e5rf" path="res://general_scripts/story.gd" id="1_of347"]
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_wq8l7"]
@@ -12,6 +12,47 @@
 [ext_resource type="AudioStream" uid="uid://c6ibw78ox16cq" path="res://assets/sounds/Narrator2.mp3" id="9_q8x5h"]
 [ext_resource type="AudioStream" uid="uid://bfau822rehmq2" path="res://assets/sounds/raging wind.mp3" id="10_1c6lq"]
 [ext_resource type="AudioStream" uid="uid://r5rsllvny0dm" path="res://assets/sounds/grr.mp3" id="11_1c6lq"]
+[ext_resource type="Script" uid="uid://cua7n4y7rg5dj" path="res://general_scripts/spawns.gd" id="13_46kfa"]
+[ext_resource type="PackedScene" uid="uid://bl44pxcttju05" path="res://scenes/entities/enemies/enemy_for_show.tscn" id="14_l2ljf"]
+
+[sub_resource type="Animation" id="Animation_ev3b6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_8ctay"]
 resource_name = "fade"
@@ -29,24 +70,38 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ev3b6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_l2ljf"]
+resource_name = "circle"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fade/ColorRect:color")
-tracks/0/interp = 1
+tracks/0/path = NodePath("../Camera3D:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(3.8147767, 0, -4.6324306), Vector3(-0.5467555, 0, -10.044364), Vector3(-5.4926715, 0, -5.4786005), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k0a0m"]
 _data = {
 &"RESET": SubResource("Animation_ev3b6"),
+&"circle": SubResource("Animation_l2ljf"),
 &"fade": SubResource("Animation_8ctay")
 }
 
@@ -272,73 +327,73 @@ libraries = {
 &"": SubResource("AnimationLibrary_k0a0m")
 }
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="props" type="Node3D" parent="."]
 
-[node name="Sketchfab_Scene" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.4148191, -0.9339731, -1.4375453)
 
-[node name="Sketchfab_Scene2" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene2" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 2.508595, -0.9339731, -2.7578259)
 
-[node name="Sketchfab_Scene3" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene3" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.1217253, -0.9339731, -4.0439353)
 
-[node name="Sketchfab_Scene5" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene5" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 2.2646606, -0.9339731, -4.7552695)
 
-[node name="Sketchfab_Scene6" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene6" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -1.5535285, -0.9339731, -1.456819)
 
-[node name="Sketchfab_Scene7" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene7" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -1.7238777, -0.9339731, -3.1628282)
 
-[node name="Sketchfab_Scene8" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene8" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -3.6135004, -0.9339731, -3.0802994)
 
-[node name="Sketchfab_Scene9" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene9" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -1.7706325, -0.9339731, -4.9453)
 
-[node name="Sketchfab_Scene10" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene10" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -3.3161442, -0.9339731, -4.3932643)
 
-[node name="Sketchfab_Scene4" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene4" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.053838387, -0.00012452614, -0.05221506, -6.6143395e-05, 0.074999556, -0.00024706428, 0.052215166, 0.00022340311, 0.053837966, 1.9810915, -0.9419354, -8.484898)
 
-[node name="Sketchfab_Scene11" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene11" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.053838387, -0.00012452614, -0.05221506, -6.6143395e-05, 0.074999556, -0.00024706428, 0.052215166, 0.00022340311, 0.053837966, 1.2512139, -0.9385508, -4.5361667)
 
-[node name="Sketchfab_Scene12" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene12" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.053838387, -0.00012452614, -0.05221506, -6.6143395e-05, 0.074999556, -0.00024706428, 0.052215166, 0.00022340311, 0.053837966, 1.1510469, -0.933091, -6.4249287)
 
-[node name="Sketchfab_Scene13" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene13" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.053838387, -0.00012452614, -0.05221506, -6.6143395e-05, 0.074999556, -0.00024706428, 0.052215166, 0.00022340311, 0.053837966, 2.4667284, -0.9317557, -6.139839)
 
-[node name="Sketchfab_Scene14" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene14" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.07498292, -0.00012452612, 0.0015954694, 0.00012925007, 0.07499955, -0.00022070372, -0.0015950935, 0.0002234031, 0.0749827, -2.5705235, -0.9392541, -6.430312)
 
-[node name="Sketchfab_Scene15" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene15" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.07498292, -0.00012452612, 0.0015954694, 0.00012925007, 0.07499955, -0.00022070372, -0.0015950935, 0.0002234031, 0.0749827, -1.5050832, -0.93348396, -7.77355)
 
-[node name="Sketchfab_Scene16" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene16" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.07498292, -0.00012452612, 0.0015954694, 0.00012925007, 0.07499955, -0.00022070372, -0.0015950935, 0.0002234031, 0.0749827, -2.9189968, -0.9320893, -9.029867)
 
-[node name="Sketchfab_Scene17" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene17" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.07498292, -0.00012452612, 0.0015954694, 0.00012925007, 0.07499955, -0.00022070372, -0.0015950935, 0.0002234031, 0.0749827, -4.2685337, -0.92757094, -5.942963)
 
-[node name="Sketchfab_Scene18" parent="Node3D" instance=ExtResource("1_wq8l7")]
+[node name="Sketchfab_Scene18" parent="props" instance=ExtResource("1_wq8l7")]
 transform = Transform3D(0.07498292, -0.00012452612, 0.0015954694, 0.00012925007, 0.07499955, -0.00022070372, -0.0015950935, 0.0002234031, 0.0749827, -1.7914535, -0.92802644, -9.765346)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props"]
 transform = Transform3D(30.6, 0, 0, 0, 0.125, 0, 0, 0, 24.965, 0, -0.9008508, 0)
 material_override = SubResource("StandardMaterial3D_2kgj7")
 mesh = SubResource("BoxMesh_83yd8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="props"]
 transform = Transform3D(35.585, 0, 0, 0, 11.37, 0, 0, 0, 1, 0, 3.7365258, -10.725418)
 material_override = SubResource("StandardMaterial3D_8mlxe")
 mesh = SubResource("QuadMesh_jj4cq")
 
-[node name="CPUParticles3D" type="GPUParticles3D" parent="Node3D"]
+[node name="CPUParticles3D" type="GPUParticles3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5784695, -2.3051417)
 amount = 40
 lifetime = 5.0
@@ -380,3 +435,26 @@ stream = ExtResource("10_1c6lq")
 
 [node name="grr" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("11_1c6lq")
+
+[node name="spawns" type="Node3D" parent="." node_paths=PackedStringArray("spawns")]
+script = ExtResource("13_46kfa")
+spawns = [NodePath("spawn"), NodePath("spawn2"), NodePath("spawn3"), NodePath("spawn4"), NodePath("spawn5"), NodePath("spawn")]
+enemy = ExtResource("14_l2ljf")
+
+[node name="spawn" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2226794, -0.31119886, -5.5083847)
+
+[node name="spawn6" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0200624, -0.31119886, -2.8737907)
+
+[node name="spawn2" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8449876, -0.31119886, -5.5083847)
+
+[node name="spawn3" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8449876, -0.31119886, -2.8239138)
+
+[node name="spawn4" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8449876, -0.31119886, -8.467369)
+
+[node name="spawn5" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2797637, -0.31119886, -7.5707574)

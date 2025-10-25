@@ -1,10 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://qe13iuhtvaoi"]
+[gd_scene load_steps=31 format=3 uid="uid://qe13iuhtvaoi"]
 
 [ext_resource type="Script" uid="uid://cguxq3qy4nqh5" path="res://general_scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://dl8iqmloyfrfb" path="res://scenes/entities/player.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://chbi3j8xduugc" path="res://assets/textures/wood.jpg" id="3_k0juu"]
 [ext_resource type="Texture2D" uid="uid://ccy0mm64lpmbx" path="res://assets/textures/Dirt.jpg" id="4_71j4m"]
 [ext_resource type="PackedScene" uid="uid://nr6mfxir5gfq" path="res://scenes/shop.tscn" id="6_qfnet"]
+[ext_resource type="Texture2D" uid="uid://dei71io8wc2ly" path="res://assets/textures/grass.png" id="6_w7kh3"]
+[ext_resource type="Texture2D" uid="uid://cteaveatm1rs4" path="res://assets/textures/brick.png" id="7_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://cue3su50sgqxw" path="res://scenes/entities/chef.tscn" id="7_i7141"]
 [ext_resource type="PackedScene" uid="uid://cnipvp8h5ocbr" path="res://scenes/entities/enemies/enemy.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://banqrs0mdtxn7" path="res://scenes/entities/enemies/boss.tscn" id="8_7r4gi"]
@@ -46,7 +48,14 @@ albedo_texture = ExtResource("4_71j4m")
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(21.901, 0.23, 26.34)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5onr"]
+albedo_texture = ExtResource("6_w7kh3")
+
 [sub_resource type="QuadMesh" id="QuadMesh_a202f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhx03"]
+albedo_texture = ExtResource("7_e3hyu")
+uv1_scale = Vector3(27.36, 2.35, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4mrxx"]
 
@@ -130,7 +139,7 @@ enemy = ExtResource("8_4mrxx")
 spawns = [NodePath("spawns/spawn1"), NodePath("spawns/spawn2"), NodePath("spawns/spawn3"), NodePath("spawns/spawn4"), NodePath("spawns/spawn5"), NodePath("spawns/spawn6"), NodePath("spawns/spawn7")]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.86602294, 0.4829652, -0.12941247, 0, -0.25882298, -0.96592486, -0.50000304, -0.83651286, 0.22414699, 0, 0, 0)
+transform = Transform3D(-0.8660229, 0.48296517, -0.12941247, 0, -0.25882298, -0.96592486, -0.500003, -0.8365128, 0.22414699, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -317,10 +326,12 @@ shape = SubResource("BoxShape3D_4xowi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(21.9007, 0, 0, 0, -1.15135e-06, 1, 0, -26.3397, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q5onr")
 mesh = SubResource("QuadMesh_a202f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 4.78003, 0, 0, 0, 27.227, -11.2009, 2.35379, 0)
+material_override = SubResource("StandardMaterial3D_jhx03")
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
@@ -331,6 +342,7 @@ shape = SubResource("ConvexPolygonShape3D_4mrxx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 4.78003, 0, 0, 0, 27.227, 10.9138, 2.35379, 0)
+material_override = SubResource("StandardMaterial3D_jhx03")
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D2"]
@@ -341,6 +353,7 @@ shape = SubResource("ConvexPolygonShape3D_7r4gi")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, 27.227, 0, 4.78003, 0, -1, 0, -1.19013e-06, 0.0851288, 2.35379, 13.4204)
+material_override = SubResource("StandardMaterial3D_jhx03")
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D3"]
@@ -351,6 +364,7 @@ shape = SubResource("ConvexPolygonShape3D_w7kh3")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, 27.227, 0, 4.78003, 0, -1, 0, -1.19013e-06, 0.0851288, 2.35379, -13.415)
+material_override = SubResource("StandardMaterial3D_jhx03")
 mesh = SubResource("BoxMesh_4mrxx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D4"]
@@ -398,9 +412,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98448, 1.14461, -5.91104)
 
 [node name="Boss" parent="." instance=ExtResource("8_7r4gi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30218, -4.87441)
-
-[connection signal="body_entered" from="Player/Camera3D/SWORD/Area3D" to="Player/Camera3D/SWORD" method="damage_taken"]
-[connection signal="body_entered" from="Player/Camera3D/BROKEN_MACE/Area3D" to="Player/Camera3D/BROKEN_MACE" method="damage_taken"]
 
 [editable path="Player"]
 [editable path="Player/Camera3D/SWORD"]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://bl44pxcttju05"]
+
+[ext_resource type="Script" uid="uid://b8vlr2slviawy" path="res://general_scripts/enemy_for_show.gd" id="1_pqexo"]
+[ext_resource type="PackedScene" uid="uid://byp00uoj8rifo" path="res://scenes/components/health_component.tscn" id="5_0s72u"]
+[ext_resource type="PackedScene" uid="uid://b8i7l4w2p2wl" path="res://scenes/weapons/player_sword.tscn" id="9_o670h"]
+[ext_resource type="Script" uid="uid://ykkwkynk4g3i" path="res://scenes/weapons/enemy_attack.gd" id="10_k3yrl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tegq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_md0e3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p1mj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_md0e3"]
+
+[sub_resource type="Animation" id="Animation_wyqsp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uu37f"]
+resource_name = "swing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.00356, 0.204204, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6k81"]
+_data = {
+&"RESET": SubResource("Animation_wyqsp"),
+&"swing": SubResource("Animation_uu37f")
+}
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("1_pqexo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.24466711, 0, 0, 0, 0.24466711, 0, 0, 0, 0.24466711, 0.06717881, 0.05398711, -0.13511842)
+shape = SubResource("CapsuleShape3D_8tegq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.18697608, 0, 0, 0, 0.110781595, 0, 0, 0, 0.12565735, 0.06717881, 0.15429622, -0.2520791)
+mesh = SubResource("BoxMesh_md0e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.24466711, 0, 0, 0, 0.24466711, 0, 0, 0, 0.24466711, 0.06717881, 0.05398711, -0.13511842)
+material_override = SubResource("StandardMaterial3D_7p1mj")
+mesh = SubResource("CapsuleMesh_md0e3")
+
+[node name="Sword" parent="." instance=ExtResource("9_o670h")]
+transform = Transform3D(0.24466711, 0, 0, 0, 0.24466711, 0, 0, 0, 0.24466711, 0.17706664, -0.071024336, -0.23797943)
+script = ExtResource("10_k3yrl")
+
+[node name="Cube_002" parent="Sword" index="2"]
+transform = Transform3D(0.0301018, 0, 0, 0, 0.683153, 0, 0, 0, 0.0301018, 0, 1.10358, -0.00160462)
+
+[node name="Area3D" parent="Sword" index="3"]
+collision_layer = 8
+
+[node name="CollisionShape3D" parent="Sword/Area3D" index="0"]
+transform = Transform3D(0.301378, 0, 0, 0, 0.301378, 0, 0, 0, 0.301378, -0.00463724, 1.20333, -0.0023087)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
+libraries = {
+&"": SubResource("AnimationLibrary_w6k81")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.24466711, 0, 0, 0, 0.24466711, 0, 0, 0, 0.24466711, 0.06609364, 0.16612685, -0.1341343)
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 31
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_0s72u")]
+enemy_level = 1
+
+[connection signal="body_entered" from="Sword/Area3D" to="Sword" method="damage_taken"]
+
+[editable path="Sword"]
