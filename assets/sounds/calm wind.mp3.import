@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3valfy2xabe0"
+path="res://.godot/imported/calm wind.mp3-73dac87548d3dc536db3abd3ed5a58e4.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/calm wind.mp3"
+dest_files=["res://.godot/imported/calm wind.mp3-73dac87548d3dc536db3abd3ed5a58e4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

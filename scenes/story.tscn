@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c4f6gnvoptru2"]
+[gd_scene load_steps=26 format=3 uid="uid://c4f6gnvoptru2"]
 
 [ext_resource type="Script" uid="uid://57u41rq3e5rf" path="res://general_scripts/story.gd" id="1_of347"]
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_wq8l7"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://dja0bglfj2sdt" path="res://assets/sounds/Eli1.mp3" id="6_yrqcj"]
 [ext_resource type="AudioStream" uid="uid://b5ardakgat32h" path="res://assets/sounds/Eli2.mp3" id="7_he5lq"]
 [ext_resource type="AudioStream" uid="uid://b20lsahji2thv" path="res://assets/sounds/Narrator1.mp3" id="8_oiacb"]
+[ext_resource type="AudioStream" uid="uid://3valfy2xabe0" path="res://assets/sounds/calm wind.mp3" id="9_oiacb"]
+[ext_resource type="AudioStream" uid="uid://c6ibw78ox16cq" path="res://assets/sounds/Narrator2.mp3" id="9_q8x5h"]
+[ext_resource type="AudioStream" uid="uid://bfau822rehmq2" path="res://assets/sounds/raging wind.mp3" id="10_1c6lq"]
+[ext_resource type="AudioStream" uid="uid://r5rsllvny0dm" path="res://assets/sounds/grr.mp3" id="11_1c6lq"]
 
 [sub_resource type="Animation" id="Animation_8ctay"]
 resource_name = "fade"
@@ -354,11 +358,25 @@ environment = SubResource("Environment_2kgj7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[node name="Eli1" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Eli1" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("6_yrqcj")
 
-[node name="Eli2" type="AudioStreamPlayer" parent="."]
+[node name="Eli2" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("7_he5lq")
 
-[node name="Narrator1" type="AudioStreamPlayer" parent="."]
+[node name="Narrator1" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_oiacb")
+
+[node name="Narrator2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_q8x5h")
+
+[node name="calm_wind" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_oiacb")
+
+[node name="rage_wind" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_1c6lq")
+
+[node name="grr" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_1c6lq")
