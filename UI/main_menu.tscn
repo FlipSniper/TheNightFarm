@@ -41,7 +41,7 @@ resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("fade/ColorRect:color")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +56,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("fade/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -130,10 +130,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = 30.0
-offset_right = 17.0
-offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -158,13 +154,18 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_d8nwk")
 text = "PLAY"
+metadata/_edit_use_anchors_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Main_Menu"]
+[node name="fade" type="CanvasLayer" parent="Main_Menu"]
 
-[node name="ColorRect" type="ColorRect" parent="Main_Menu/CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Main_Menu/fade"]
+anchors_preset = -1
+anchor_right = 0.0015625
+anchor_bottom = 0.1125
 offset_right = 1278.0
 offset_bottom = 639.0
 color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main_Menu"]
 libraries = {
@@ -248,4 +249,5 @@ draw_pass_1 = SubResource("PlaneMesh_k0a0m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
+[connection signal="mouse_entered" from="Main_Menu/Buttons/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Main_Menu/Buttons/Button" to="." method="play"]
