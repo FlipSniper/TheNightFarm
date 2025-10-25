@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6q0n1t61lxmm"]
+[gd_scene load_steps=20 format=3 uid="uid://c6q0n1t61lxmm"]
 
 [ext_resource type="Script" uid="uid://dq8566xenp0q0" path="res://UI/main_menu.gd" id="1_4cwpn"]
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_p8ccj"]
@@ -11,13 +11,13 @@ sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_cover = ExtResource("1_tk8dj")
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_tk8dj"]
+[sub_resource type="Sky" id="Sky_f40uw"]
 sky_material = SubResource("ProceduralSkyMaterial_p8ccj")
 
 [sub_resource type="Environment" id="Environment_d8nwk"]
 background_mode = 2
 background_energy_multiplier = 0.2
-sky = SubResource("Sky_tk8dj")
+sky = SubResource("Sky_f40uw")
 sky_rotation = Vector3(0, 3.9357173, 0)
 tonemap_mode = 2
 glow_enabled = true
@@ -35,6 +35,42 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 shadow_color = Color(0, 0, 0, 0.7882353)
 shadow_size = 25
+
+[sub_resource type="Animation" id="Animation_8ctay"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ev3b6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0a0m"]
+_data = {
+&"RESET": SubResource("Animation_ev3b6"),
+&"fade": SubResource("Animation_8ctay")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cwpn"]
 albedo_texture = ExtResource("3_d8nwk")
@@ -66,7 +102,7 @@ tangential_accel_max = 0.99999774
 scale_min = 0.049999997
 scale_max = 0.099999994
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ev3b6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mudq"]
 transparency = 2
 alpha_scissor_threshold = 0.9
 alpha_antialiasing_mode = 0
@@ -74,7 +110,7 @@ cull_mode = 2
 albedo_texture = ExtResource("5_f40uw")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0a0m"]
-material = SubResource("StandardMaterial3D_ev3b6")
+material = SubResource("StandardMaterial3D_2mudq")
 orientation = 0
 
 [node name="Node" type="Node"]
@@ -122,6 +158,18 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_d8nwk")
 text = "PLAY"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Main_Menu"]
+
+[node name="ColorRect" type="ColorRect" parent="Main_Menu/CanvasLayer"]
+offset_right = 1278.0
+offset_bottom = 639.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main_Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_k0a0m")
+}
 
 [node name="Node3D" type="Node3D" parent="."]
 
