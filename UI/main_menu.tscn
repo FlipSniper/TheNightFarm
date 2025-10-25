@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6q0n1t61lxmm"]
+[gd_scene load_steps=7 format=3 uid="uid://c6q0n1t61lxmm"]
 
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_p8ccj"]
+[ext_resource type="Texture2D" uid="uid://cprv22fqk2wmn" path="res://assets/textures/qwantani_dusk_2_1k.hdr" id="1_tk8dj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p8ccj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_cover = ExtResource("1_tk8dj")
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_tk8dj"]
@@ -13,8 +15,11 @@ sky_material = SubResource("ProceduralSkyMaterial_p8ccj")
 background_mode = 2
 background_energy_multiplier = 0.2
 sky = SubResource("Sky_tk8dj")
+sky_rotation = Vector3(0, 3.9357173, 0)
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8nwk"]
 
 [node name="Node" type="Node"]
 
@@ -114,6 +119,10 @@ transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.05334
 
 [node name="Sketchfab_Scene15" parent="Node3D" instance=ExtResource("1_p8ccj")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -6.8539453, -0.9339731, -4.3932643)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(30.6, 0, 0, 0, 0.125, 0, 0, 0, 24.965, 0, -0.9008508, 0)
+mesh = SubResource("BoxMesh_d8nwk")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8433557)
