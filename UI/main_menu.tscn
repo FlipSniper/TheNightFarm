@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6q0n1t61lxmm"]
+[gd_scene load_steps=12 format=3 uid="uid://c6q0n1t61lxmm"]
 
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_p8ccj"]
 [ext_resource type="Texture2D" uid="uid://cprv22fqk2wmn" path="res://assets/textures/qwantani_dusk_2_1k.hdr" id="1_tk8dj"]
+[ext_resource type="Texture2D" uid="uid://ccy0mm64lpmbx" path="res://assets/textures/Dirt.jpg" id="3_d8nwk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p8ccj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,13 +19,35 @@ sky = SubResource("Sky_tk8dj")
 sky_rotation = Vector3(0, 3.9357173, 0)
 tonemap_mode = 2
 glow_enabled = true
+fog_light_energy = 1.35
+volumetric_fog_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8nwk"]
+bg_color = Color(0.7254902, 0.7254902, 0.7254902, 0.14117648)
+border_color = Color(1, 1, 1, 0.44313726)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.7882353)
+shadow_size = 25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cwpn"]
+albedo_texture = ExtResource("3_d8nwk")
+uv1_scale = Vector3(15.235, 15.235, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_d8nwk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8nwk"]
+albedo_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_4cwpn"]
 
 [node name="Node" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.4999239, 0.008726193, 0, 0.017452383, 0.9998477, -0.50000006, 0.8658935, -0.015114207, 0, 3.734737, -6.057795)
+light_energy = 0.4
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
@@ -36,6 +59,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 30.0
+offset_right = 17.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -44,6 +71,8 @@ grow_vertical = 2
 [node name="Buttons" type="CanvasLayer" parent="Main_Menu"]
 
 [node name="Button" type="Button" parent="Main_Menu/Buttons"]
+modulate = Color(1, 1, 1, 0.6431373)
+self_modulate = Color(1, 1, 1, 0.6313726)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -56,6 +85,7 @@ offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_d8nwk")
 text = "PLAY"
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -120,9 +150,75 @@ transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.05334
 [node name="Sketchfab_Scene15" parent="Node3D" instance=ExtResource("1_p8ccj")]
 transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -6.8539453, -0.9339731, -4.3932643)
 
+[node name="Sketchfab_Scene21" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -0.6923009, -0.9339731, -3.4375453)
+
+[node name="Sketchfab_Scene22" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0.40147495, -0.9339731, -4.757826)
+
+[node name="Sketchfab_Scene23" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -0.9853947, -0.9339731, -6.0439353)
+
+[node name="Sketchfab_Scene24" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.6365111, -0.9339731, -6.0439353)
+
+[node name="Sketchfab_Scene25" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0.15754056, -0.9339731, -6.7552695)
+
+[node name="Sketchfab_Scene26" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.056109183, 0, -0.04976705, 0, 0.074999996, 0, 0.04976705, 0, 0.056109183, 1.3173585, -0.9339731, -3.3955932)
+
+[node name="Sketchfab_Scene27" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.056109183, 0, -0.04976705, 0, 0.074999996, 0, 0.04976705, 0, 0.056109183, 3.011723, -0.9339731, -3.6575384)
+
+[node name="Sketchfab_Scene28" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.056109183, 0, -0.04976705, 0, 0.074999996, 0, 0.04976705, 0, 0.056109183, 2.8275862, -0.9339731, -5.539978)
+
+[node name="Sketchfab_Scene29" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.056109183, 0, -0.04976705, 0, 0.074999996, 0, 0.04976705, 0, 0.056109183, 4.7890935, -0.9339731, -3.8001842)
+
+[node name="Sketchfab_Scene30" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.056109183, 0, -0.04976705, 0, 0.074999996, 0, 0.04976705, 0, 0.056109183, 4.154656, -0.9339731, -5.313736)
+
+[node name="Sketchfab_Scene31" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -3.6606486, -0.9339731, -3.456819)
+
+[node name="Sketchfab_Scene32" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -3.8309977, -0.9339731, -5.1628284)
+
+[node name="Sketchfab_Scene33" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -5.72062, -0.9339731, -5.0802994)
+
+[node name="Sketchfab_Scene34" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -3.8777525, -0.9339731, -6.9453)
+
+[node name="Sketchfab_Scene35" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -5.4232645, -0.9339731, -6.3932643)
+
+[node name="Sketchfab_Scene36" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -7.1984496, -0.9339731, -3.456819)
+
+[node name="Sketchfab_Scene37" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -7.3687987, -0.9339731, -5.1628284)
+
+[node name="Sketchfab_Scene38" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -9.258421, -0.9339731, -5.0802994)
+
+[node name="Sketchfab_Scene39" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -7.4155536, -0.9339731, -6.9453)
+
+[node name="Sketchfab_Scene40" parent="Node3D" instance=ExtResource("1_p8ccj")]
+transform = Transform3D(0.052715506, 0, 0.053348612, 0, 0.074999996, 0, -0.053348612, 0, 0.052715506, -8.961065, -0.9339731, -6.3932643)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(30.6, 0, 0, 0, 0.125, 0, 0, 0, 24.965, 0, -0.9008508, 0)
+material_override = SubResource("StandardMaterial3D_4cwpn")
 mesh = SubResource("BoxMesh_d8nwk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(35.585, 0, 0, 0, 11.37, 0, 0, 0, 1, 0, 3.7365258, -6.4303837)
+material_override = SubResource("StandardMaterial3D_d8nwk")
+mesh = SubResource("QuadMesh_4cwpn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8433557)
