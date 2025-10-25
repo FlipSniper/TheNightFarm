@@ -39,8 +39,13 @@ func _physics_process(delta: float) -> void:
 		cooldown_timer -= delta
 
 		# Smart distancing behavior
-		if distance < MinDistance:
-			# Too close → back up
+		if distance < MinDistance / 2:
+			# Way too close → use get_away special move
+			if cooldown_timer <= 0:
+				get_away()
+				cooldown_timer = AttackCooldown
+		elif distance < MinDistance:
+			# Slightly too close → just back up normally
 			var dir = (global_position - player.global_position).normalized()
 			velocity.x = dir.x * RunSpeed
 			velocity.z = dir.z * RunSpeed

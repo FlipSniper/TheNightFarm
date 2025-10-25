@@ -100,7 +100,7 @@ crop_fireball = ExtResource("8_saib0")
 target_position = Vector3(0, 0, -2)
 
 [node name="SWORD" parent="Camera3D" instance=ExtResource("6_fjrip")]
-transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.467125, -0.883846, -0.675609)
+transform = Transform3D(0.64944804, 0, 0.76040596, 0, 1, 0, -0.76040596, 0, 0.64944804, 0.467125, -0.883846, -0.675609)
 visible = false
 script = ExtResource("7_smehm")
 damage = 10.0
@@ -114,7 +114,7 @@ libraries = {
 }
 
 [node name="BROKEN_MACE" parent="Camera3D" instance=ExtResource("9_n5sgd")]
-transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 0.511688, -0.782504, -0.730521)
+transform = Transform3D(0.64944804, 0, 0.76040596, 0, 1, 0, -0.76040596, 0, 0.64944804, 0.511688, -0.782504, -0.730521)
 visible = false
 script = ExtResource("7_smehm")
 damage = 20.0
