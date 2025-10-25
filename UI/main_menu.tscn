@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6q0n1t61lxmm"]
+[gd_scene load_steps=22 format=3 uid="uid://c6q0n1t61lxmm"]
 
 [ext_resource type="Script" uid="uid://dq8566xenp0q0" path="res://UI/main_menu.gd" id="1_4cwpn"]
 [ext_resource type="PackedScene" uid="uid://7u76fw58guo1" path="res://scenes/tree.tscn" id="1_p8ccj"]
@@ -25,6 +25,23 @@ fog_enabled = true
 fog_light_energy = 4.9
 fog_density = 0.034
 volumetric_fog_density = 0.1
+
+[sub_resource type="SystemFont" id="SystemFont_f40uw"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f40uw"]
+bg_color = Color(0, 0, 0, 0.28627452)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.7058824)
+shadow_size = 58
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8nwk"]
 bg_color = Color(0.7254902, 0.7254902, 0.7254902, 0.14117648)
@@ -135,6 +152,15 @@ grow_vertical = 2
 
 [node name="BG" type="CanvasLayer" parent="Main_Menu"]
 
+[node name="Label" type="Label" parent="Main_Menu/BG"]
+offset_left = 292.0
+offset_right = 1042.0
+offset_bottom = 147.0
+theme_override_fonts/font = SubResource("SystemFont_f40uw")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_f40uw")
+text = "The Night Farm"
+
 [node name="Buttons" type="CanvasLayer" parent="Main_Menu"]
 
 [node name="Button" type="Button" parent="Main_Menu/Buttons"]
@@ -157,6 +183,7 @@ text = "PLAY"
 metadata/_edit_use_anchors_ = true
 
 [node name="fade" type="CanvasLayer" parent="Main_Menu"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Main_Menu/fade"]
 anchors_preset = -1
